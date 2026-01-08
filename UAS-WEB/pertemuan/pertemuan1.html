@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pengenalan Web - Materi Pemrograman Web 1">
+    <title>Pertemuan 1: Pengenalan Web | Pemrograman Web 1</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Prism.js for Syntax Highlighting -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/style.css">
+    
+    <style>
+        /* Additional styles for materi page */
+        .materi-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            margin-top: 90px;
+            padding: 2rem 0;
+            min-height: calc(100vh - 90px);
+        }
+        
+        .sidebar {
+            position: sticky;
+            top: 90px;
+            height: fit-content;
+            max-height: calc(100vh - 110px);
+            overflow-y: auto;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+        }
+        
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .sidebar-header h3 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .sidebar-toggle {
+            display: none;
+            width: 36px;
+            height: 36px;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-tertiary);
+            border-radius: var(--radius-md);
+        }
+        
+        .sidebar-nav {
+            display: grid;
+            gap: 0.5rem;
+        }
+        
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem;
+            color: var(--text-secondary);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-base);
+            font-size: 0.938rem;
+        }
+        
+        .sidebar-link:hover,
+        .sidebar-link.active {
+            background: var(--bg-primary);
+            color: var(--primary);
+        }
+        
+        .sidebar-link svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .content-area {
+            background: var(--bg-primary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+        }
+        
+        .content-header {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+        
+        .breadcrumb a {
+            color: var(--primary);
+        }
+        
+        .breadcrumb svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .content-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .content-meta {
+            display: flex;
+            gap: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.938rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .meta-item svg {
+            width: 18px;
+            height: 18px;
+        }
+        
+        .content-body h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 2.5rem 0 1rem;
+            padding-top: 1rem;
+        }
+        
+        .content-body h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin: 2rem 0 1rem;
+        }
+        
+        .content-body h4 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 1.5rem 0 0.75rem;
+        }
+        
+        .content-body p {
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+        
+        .content-body ul,
+        .content-body ol {
+            margin: 1rem 0 1rem 1.5rem;
+            list-style: disc;
+        }
+        
+        .content-body li {
+            margin-bottom: 0.5rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+        }
+        
+        .info-box {
+            background: var(--bg-secondary);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 2rem 0;
+        }
+        
+        .info-box h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0 0 1rem 0;
+            color: var(--primary);
+        }
+        
+        .info-box svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .code-block-wrapper {
+            position: relative;
+            margin: 1.5rem 0;
+        }
+        
+        .copy-code-btn {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            transition: all var(--transition-base);
+            z-index: 10;
+        }
+        
+        .copy-code-btn:hover {
+            background: var(--bg-secondary);
+            color: var(--primary);
+        }
+        
+        .copy-code-btn.copied {
+            background: var(--success);
+            color: white;
+            border-color: var(--success);
+        }
+        
+        .copy-code-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .code-playground {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .playground-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        
+        .playground-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .playground-title svg {
+            width: 20px;
+            height: 20px;
+            color: var(--primary);
+        }
+        
+        .playground-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .playground-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-primary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 0.875rem;
+            transition: all var(--transition-base);
+        }
+        
+        .playground-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .playground-btn svg {
+            width: 16px;
+            height: 16px;
+        }
+        
+        .playground-editor {
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            line-height: 1.6;
+            resize: vertical;
+            margin-bottom: 1rem;
+        }
+        
+        .playground-preview {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            min-height: 200px;
+        }
+        
+        .playground-preview iframe {
+            width: 100%;
+            min-height: 200px;
+            border: none;
+        }
+        
+        .content-navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 2px solid var(--border);
+        }
+        
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 1.5rem;
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: all var(--transition-base);
+        }
+        
+        .nav-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+        
+        .reading-progress {
+            position: fixed;
+            top: 70px;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            z-index: 999;
+            transition: width 0.1s ease;
+        }
+        
+        @media (max-width: 1024px) {
+            .materi-layout {
+                grid-template-columns: 1fr;
+            }
+            
+            .sidebar {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 280px;
+                height: calc(100vh - 70px);
+                z-index: 998;
+                transition: left var(--transition-base);
+            }
+            
+            .sidebar.active {
+                left: 0;
+            }
+            
+            .sidebar-toggle {
+                display: flex;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-area {
+                padding: 1.5rem;
+            }
+            
+            .content-title {
+                font-size: 2rem;
+            }
+            
+            .content-meta {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Reading Progress Bar -->
+    <div id="reading-progress" class="reading-progress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar scrolled">
+        <div class="container">
+            <div class="nav-brand">
+                <i data-lucide="code-2"></i>
+                <span>Pemrograman Web 1</span>
+            </div>
+            <div class="nav-menu">
+                <a href="../index.html" class="nav-link">Beranda</a>
+                <a href="../index.html#materi" class="nav-link">Materi</a>
+                <a href="../index.html#about" class="nav-link">Tentang</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-sidebar-toggle">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="materi-layout">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <div class="sidebar-header">
+                    <h3>Daftar Materi</h3>
+                    <button class="sidebar-toggle" id="sidebar-toggle">
+                        <i data-lucide="x"></i>
+                    </button>
+                </div>
+                <nav class="sidebar-nav">
+                    <a href="pertemuan1.html" class="sidebar-link active">
+                        <i data-lucide="file-text"></i>
+                        <span>Pertemuan 1</span>
+                    </a>
+                    <a href="pertemuan2.html" class="sidebar-link">
+                        <i data-lucide="file-text"></i>
+                        <span>Pertemuan 2</span>
+                    </a>
+                    <a href="pertemuan3.html" class="sidebar-link">
+                        <i data-lucide="file-text"></i>
+                        <span>Pertemuan 3</span>
+                    </a>
+                </nav>
+            </aside>
+
+            <!-- Main Content -->
+            <main class="content-area">
+                <!-- Header -->
+                <header class="content-header">
+                    <nav class="breadcrumb">
+                        <a href="../index.html">Beranda</a>
+                        <i data-lucide="chevron-right"></i>
+                        <span>Pertemuan 1</span>
+                    </nav>
+                    <h1 class="content-title">Pengenalan Web</h1>
+                    <div class="content-meta">
+                        <div class="meta-item">
+                            <i data-lucide="book-open"></i>
+                            <span>Pertemuan 1</span>
+                        </div>
+                        <div class="meta-item">
+                            <i data-lucide="clock"></i>
+                            <span>30 menit</span>
+                        </div>
+                        <div class="meta-item">
+                            <i data-lucide="bar-chart"></i>
+                            <span>Dasar</span>
+                        </div>
+                    </div>
+                </header>
+
+                <!-- Content Body -->
+                <article class="content-body">
+                    <!-- Tujuan Pembelajaran -->
+                    <div class="info-box">
+                        <h4>
+                            <i data-lucide="target"></i>
+                            Tujuan Pembelajaran
+                        </h4>
+                        <p>Setelah menyelesaikan pertemuan ini, mahasiswa mampu:</p>
+                        <ul>
+                            <li>Menjelaskan konsep World Wide Web (WWW)</li>
+                            <li>Memahami proses kerja web dan protokol HTTP</li>
+                            <li>Mengenal peran server dan client dalam web</li>
+                            <li>Mempraktikkan penulisan struktur dasar HTML</li>
+                        </ul>
+                    </div>
+
+                    <!-- World Wide Web -->
+                    <h2>1. World Wide Web (WWW)</h2>
+                    
+                    <h3>Pengertian WWW</h3>
+                    <p>World Wide Web (WWW) adalah kumpulan web di seluruh dunia yang memberikan layanan kepada pengguna untuk mengakses informasi melalui halaman web atau situs yang diinginkan. Internet memberi akses pengguna ke sejumlah besar dokumen yang ditautkan satu sama lain melalui hyperlink.</p>
+                    
+                    <h3>Konsep Dasar</h3>
+                    <ul>
+                        <li><strong>Hypertext:</strong> Memungkinkan pengguna menghubungkan kata/frasa untuk mengakses dokumen lain dengan informasi tambahan</li>
+                        <li><strong>Hypermedia:</strong> Menghubungkan ke objek multimedia seperti gambar, audio, animasi, dan film</li>
+                        <li><strong>Client-Server:</strong> Internet bekerja dalam format server-client, di mana server menyimpan dan mengirim dokumen, sementara client meminta dokumen tersebut</li>
+                    </ul>
+
+                    <h3>Komponen WWW</h3>
+                    <ul>
+                        <li><strong>HTML (Hypertext Markup Language):</strong> Bahasa markup untuk membangun halaman web</li>
+                        <li><strong>Browser:</strong> Software untuk menampilkan dan mengakses halaman web</li>
+                        <li><strong>Web Server:</strong> Program yang menyimpan dan mengirim dokumen web</li>
+                        <li><strong>HTTP:</strong> Protokol komunikasi untuk transfer data di web</li>
+                    </ul>
+
+                    <!-- Cara Kerja Web -->
+                    <h2>2. Cara Kerja Web</h2>
+                    
+                    <h3>Protokol HTTP</h3>
+                    <p>HyperText Transmission Protocol (HTTP) adalah protokol komunikasi yang digunakan untuk menghubungkan server ke Internet atau jaringan area lokal (intranet). HTTP bekerja melalui port 80 pada server dan bertanggung jawab untuk:</p>
+                    <ul>
+                        <li>Menghubungkan ke server</li>
+                        <li>Mengirim halaman HTML ke browser pengguna</li>
+                        <li>Mengunduh file dari server</li>
+                    </ul>
+
+                    <h3>Alur Proses</h3>
+                    <ol>
+                        <li>User mengetik URL di browser</li>
+                        <li>Browser mengirim request melalui protokol HTTP/TCP-IP</li>
+                        <li>Web server menerima dan memproses request</li>
+                        <li>Server mengirim response berupa HTML</li>
+                        <li>Browser menerjemahkan (interpreting) HTML dan menampilkannya</li>
+                    </ol>
+
+                    <div class="info-box">
+                        <h4>
+                            <i data-lucide="lightbulb"></i>
+                            Catatan Penting
+                        </h4>
+                        <p><strong>Script HTML</strong> dibaca langsung oleh browser dan ditampilkan pada sisi client. Sedangkan <strong>script PHP</strong> dibaca oleh web server, diterjemahkan oleh PHP Parser, dan hasilnya berupa HTML yang ditampilkan browser.</p>
+                    </div>
+
+                    <!-- Web Server -->
+                    <h2>3. Web Server</h2>
+                    
+                    <h3>Definisi</h3>
+                    <p>Web server adalah komputer yang menyimpan file website (HTML, CSS, JavaScript, gambar) dan mengirimkannya ke perangkat pengguna ketika diminta melalui browser.</p>
+
+                    <h3>Fungsi Web Server</h3>
+                    <ul>
+                        <li><strong>Menyimpan data:</strong> Menyimpan dan mengamankan semua data situs web</li>
+                        <li><strong>Menyediakan akses:</strong> Memberikan akses ke website yang di-hosting</li>
+                        <li><strong>Melayani request:</strong> Menerima dan merespon permintaan dari pengguna</li>
+                        <li><strong>Bandwidth control:</strong> Mengatur lalu lintas jaringan untuk menghindari overload</li>
+                        <li><strong>Virtual hosting:</strong> Meng-host beberapa website dalam satu server</li>
+                        <li><strong>Server-side scripting:</strong> Menjalankan bahasa seperti PHP, Python, Ruby, ASP</li>
+                    </ul>
+
+                    <h3>Keunggulan Apache Web Server</h3>
+                    <ul>
+                        <li>Open source dan gratis</li>
+                        <li>Dapat dimodifikasi sesuai kebutuhan</li>
+                        <li>Mendukung banyak modul tambahan</li>
+                        <li>Handal dan stabil</li>
+                        <li>Mudah diinstall</li>
+                        <li>Perubahan terekam otomatis tanpa restart</li>
+                        <li>Cross-platform (Windows, Linux, dll)</li>
+                        <li>Dokumentasi lengkap</li>
+                    </ul>
+
+                    <!-- HTML Dasar -->
+                    <h2>4. Pengantar HTML</h2>
+                    
+                    <h3>Apa itu HTML?</h3>
+                    <p>HTML (HyperText Markup Language) adalah bahasa markup untuk menggambarkan struktur halaman web. HTML terdiri dari serangkaian elemen yang meminta browser untuk menampilkan konten dengan cara tertentu.</p>
+
+                    <h3>Kegunaan HTML</h3>
+                    <ul>
+                        <li>Menampilkan halaman web beserta konten digital</li>
+                        <li>Mengunggah informasi secara online yang dapat diakses kapan saja</li>
+                        <li>Membuat form untuk pendaftaran, komentar, dan transaksi</li>
+                        <li>Menampilkan multimedia (video, gambar, suara, java applet)</li>
+                    </ul>
+
+                    <h3>Elemen HTML</h3>
+                    <p>Dokumen HTML tersusun dari dua bagian utama:</p>
+                    <ul>
+                        <li><strong>&lt;HEAD&gt;:</strong> Berisi title tag, meta tag, CSS code, dan JavaScript code</li>
+                        <li><strong>&lt;BODY&gt;:</strong> Berisi semua konten yang ditampilkan (teks, hyperlink, gambar, tabel, dll)</li>
+                    </ul>
+
+                    <!-- Struktur HTML -->
+                    <h2>5. Struktur Dasar HTML</h2>
+                    
+                    <p>Berikut adalah struktur dasar dokumen HTML yang lengkap:</p>
+
+                    <pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Judul Halaman&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Selamat Datang di HTML&lt;/h1&gt;
+    &lt;p&gt;Ini adalah paragraf pertama saya.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+
+                    <!-- Code Playground -->
+                    <div class="code-playground">
+                        <div class="playground-header">
+                            <div class="playground-title">
+                                <i data-lucide="play-circle"></i>
+                                <span>Code Playground - Coba Edit & Jalankan!</span>
+                            </div>
+                            <div class="playground-actions">
+                                <button class="playground-btn run-code-btn">
+                                    <i data-lucide="play"></i>
+                                    <span>Run</span>
+                                </button>
+                                <button class="playground-btn reset-code-btn">
+                                    <i data-lucide="rotate-ccw"></i>
+                                    <span>Reset</span>
+                                </button>
+                            </div>
+                        </div>
+                        <textarea class="playground-editor"><!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Latihan HTML</title>
+</head>
+<body>
+    <h1>Hello World!</h1>
+    <p>Ini adalah halaman HTML pertama saya.</p>
+    <p>Silakan edit kode di atas dan klik Run untuk melihat hasilnya!</p>
+</body>
+</html></textarea>
+                        <div class="playground-preview">
+                            <iframe></iframe>
+                        </div>
+                    </div>
+
+                    <h3>Penjelasan Struktur</h3>
+                    <ul>
+                        <li><code>&lt;!DOCTYPE html&gt;</code> - Deklarasi tipe dokumen HTML5</li>
+                        <li><code>&lt;html&gt;</code> - Root element, pembungkus seluruh dokumen</li>
+                        <li><code>&lt;head&gt;</code> - Berisi informasi meta tentang dokumen</li>
+                        <li><code>&lt;meta charset="UTF-8"&gt;</code> - Menentukan encoding karakter</li>
+                        <li><code>&lt;title&gt;</code> - Judul yang ditampilkan di tab browser</li>
+                        <li><code>&lt;body&gt;</code> - Konten yang ditampilkan di halaman web</li>
+                    </ul>
+
+                    <!-- Tools -->
+                    <h2>6. Tools yang Dibutuhkan</h2>
+                    
+                    <h3>Browser</h3>
+                    <p>Browser adalah software client yang memungkinkan pengguna menavigasi dan menampilkan halaman web. Contoh browser:</p>
+                    <ul>
+                        <li>Google Chrome</li>
+                        <li>Mozilla Firefox</li>
+                        <li>Microsoft Edge</li>
+                        <li>Safari</li>
+                        <li>Opera</li>
+                    </ul>
+
+                    <h3>Text Editor</h3>
+                    <p>Editor adalah software untuk menulis kode HTML. Contoh editor:</p>
+                    <ul>
+                        <li>Visual Studio Code (Recommended)</li>
+                        <li>Sublime Text</li>
+                        <li>Notepad++</li>
+                        <li>Atom</li>
+                        <li>Brackets</li>
+                    </ul>
+
+                    <!-- Referensi -->
+                    <h2>7. Referensi Belajar</h2>
+                    <p>Untuk memperdalam pengetahuan tentang HTML dan web development, kunjungi sumber-sumber berikut:</p>
+                    <ul>
+                        <li><a href="https://www.w3schools.com" target="_blank">W3Schools</a> - Tutorial interaktif HTML, CSS, JavaScript</li>
+                        <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a> - Dokumentasi lengkap dari Mozilla</li>
+                        <li><a href="https://html.com" target="_blank">HTML.com</a> - Panduan HTML untuk pemula</li>
+                        <li><a href="https://www.tutorialspoint.com/html" target="_blank">TutorialsPoint</a> - Tutorial HTML komprehensif</li>
+                    </ul>
+                </article>
+
+                <!-- Navigation -->
+                <nav class="content-navigation">
+                    <a href="../index.html" class="nav-btn">
+                        <i data-lucide="arrow-left"></i>
+                        <span>Kembali ke Beranda</span>
+                    </a>
+                    <a href="pertemuan2.html" class="nav-btn">
+                        <span>Pertemuan Berikutnya</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </nav>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2024 Universitas Pamulang - Teknik Informatika S-1</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button id="back-to-top" class="back-to-top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-markup.min.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Website Pembelajaran Pemrograman Web 1 - Universitas Pamulang">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Pemrograman Web, Tutorial">
+    <meta name="author" content="Teknik Informatika - Universitas Pamulang">
+    <title>UAS | Pemrograman Web 1</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader"></div>
+        <p>Memuat halaman...</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <i data-lucide="code-2"></i>
+                <span>UAS | Pemrograman Web 1</span>
+            </div>
+            <div class="nav-menu">
+                <a href="#home" class="nav-link active">Beranda</a>
+                <a href="#materi" class="nav-link">Materi</a>
+                <a href="#about" class="nav-link">Tentang</a>
+                <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-toggle">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-bg"></div>
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <div class="hero-badge">
+                    <i data-lucide="sparkles"></i>
+                    <span>Universitas Pamulang</span>
+                </div>
+                <h1 class="hero-title">
+                    Belajar Pemrograman Web<br>
+                    <span class="gradient-text">Dari Dasar Hingga Mahir</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Materi lengkap Pemrograman Web 1 untuk mahasiswa Teknik Informatika S-1. 
+                    Pelajari HTML, CSS, dan JavaScript dengan tutorial interaktif dan modern.
+                </p>
+                <div class="hero-cta">
+                    <a href="#materi" class="btn btn-primary">
+                        <i data-lucide="book-open"></i>
+                        Mulai Belajar
+                    </a>
+                    <a href="#about" class="btn btn-secondary">
+                        <i data-lucide="info"></i>
+                        Tentang Mata Kuliah
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                        <i data-lucide="file-text"></i>
+                        <div>
+                            <h3>3</h3>
+                            <p>Pertemuan</p>
+                        </div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                        <i data-lucide="code"></i>
+                        <div>
+                            <h3>20+</h3>
+                            <p>Contoh Kode</p>
+                        </div>
+                    </div>
+                    <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                        <i data-lucide="zap"></i>
+                        <div>
+                            <h3>100%</h3>
+                            <p>Interaktif</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Keunggulan Platform</h2>
+                <p>Belajar dengan cara yang lebih efektif dan menyenangkan</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-icon">
+                        <i data-lucide="play-circle"></i>
+                    </div>
+                    <h3>Code Playground</h3>
+                    <p>Edit dan jalankan kode HTML langsung di browser tanpa perlu install apapun</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-icon">
+                        <i data-lucide="palette"></i>
+                    </div>
+                    <h3>Syntax Highlighting</h3>
+                    <p>Kode ditampilkan dengan warna yang memudahkan membaca dan memahami struktur</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-icon">
+                        <i data-lucide="smartphone"></i>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>Akses materi dari perangkat apapun - desktop, tablet, atau smartphone</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-icon">
+                        <i data-lucide="moon-star"></i>
+                    </div>
+                    <h3>Dark Mode</h3>
+                    <p>Belajar lebih nyaman dengan mode gelap yang dapat diaktifkan sesuai preferensi</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="feature-icon">
+                        <i data-lucide="copy"></i>
+                    </div>
+                    <h3>Copy Code</h3>
+                    <p>Salin kode contoh dengan satu klik untuk langsung dipraktikkan</p>
+                </div>
+                <div class="feature-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="feature-icon">
+                        <i data-lucide="bookmark"></i>
+                    </div>
+                    <h3>Easy Navigation</h3>
+                    <p>Navigasi mudah antar materi dengan sidebar yang user-friendly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materi Section -->
+    <section id="materi" class="materi">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Materi Perkuliahan</h2>
+                <p>Daftar pertemuan dan topik yang akan dipelajari</p>
+            </div>
+            <div class="materi-grid">
+                <!-- Pertemuan 1 -->
+                <div class="materi-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="materi-number">01</div>
+                    <div class="materi-content">
+                        <h3>Pengenalan Web</h3>
+                        <p>Memahami konsep World Wide Web, cara kerja web, protokol HTTP, dan struktur dasar HTML</p>
+                        <ul class="topic-list">
+                            <li><i data-lucide="check-circle"></i> World Wide Web (WWW)</li>
+                            <li><i data-lucide="check-circle"></i> Cara Kerja Web & HTTP</li>
+                            <li><i data-lucide="check-circle"></i> Web Server & Client</li>
+                            <li><i data-lucide="check-circle"></i> Struktur Dasar HTML</li>
+                        </ul>
+                        <a href="pertemuan/pertemuan1.html" class="btn btn-outline">
+                            Pelajari Materi
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pertemuan 2 -->
+                <div class="materi-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="materi-number">02</div>
+                    <div class="materi-content">
+                        <h3>Basic Tag HTML</h3>
+                        <p>Mempelajari tag-tag dasar HTML untuk membangun struktur halaman web yang baik</p>
+                        <ul class="topic-list">
+                            <li><i data-lucide="check-circle"></i> Tag Struktur HTML</li>
+                            <li><i data-lucide="check-circle"></i> Head & Meta Tag</li>
+                            <li><i data-lucide="check-circle"></i> Body & Format Dokumen</li>
+                            <li><i data-lucide="check-circle"></i> Heading & Paragraph</li>
+                        </ul>
+                        <a href="pertemuan/pertemuan2.html" class="btn btn-outline">
+                            Pelajari Materi
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pertemuan 3 -->
+                <div class="materi-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="materi-number">03</div>
+                    <div class="materi-content">
+                        <h3>Format Teks & Karakter Khusus</h3>
+                        <p>Menguasai formatting teks dan penggunaan karakter khusus dalam HTML</p>
+                        <ul class="topic-list">
+                            <li><i data-lucide="check-circle"></i> Font & Text Styling</li>
+                            <li><i data-lucide="check-circle"></i> Bold, Italic, Underline</li>
+                            <li><i data-lucide="check-circle"></i> Marquee Effect</li>
+                            <li><i data-lucide="check-circle"></i> HTML Entities</li>
+                        </ul>
+                        <a href="pertemuan/pertemuan3.html" class="btn btn-outline">
+                            Pelajari Materi
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text" data-aos="fade-right">
+                    <h2>Tentang Mata Kuliah</h2>
+                    <p class="lead">Pemrograman Web 1 adalah mata kuliah fundamental untuk mahasiswa Teknik Informatika yang ingin menguasai teknologi web development.</p>
+                    <p>Mata kuliah ini dirancang untuk memberikan pemahaman mendalam tentang HTML sebagai fondasi pembuatan website. Mahasiswa akan belajar dari konsep dasar hingga dapat membuat halaman web yang terstruktur dengan baik.</p>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <i data-lucide="graduation-cap"></i>
+                            <div>
+                                <strong>Universitas</strong>
+                                <p>Pamulang</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i data-lucide="book-open"></i>
+                            <div>
+                                <strong>Program Studi</strong>
+                                <p>Teknik Informatika S-1</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i data-lucide="code"></i>
+                            <div>
+                                <strong>Kode MK</strong>
+                                <p>TPL0293</p>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <i data-lucide="clock"></i>
+                            <div>
+                                <strong>SKS</strong>
+                                <p>3 SKS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image" data-aos="fade-left">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="code-body">
+                            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Belajar HTML&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+    &lt;p&gt;Selamat belajar web!&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i data-lucide="code-2"></i>
+                        <span>Pemrograman Web 1</span>
+                    </div>
+                    <p>Platform pembelajaran interaktif untuk mahasiswa Teknik Informatika Universitas Pamulang</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#materi">Materi</a></li>
+                        <li><a href="#about">Tentang</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Materi</h4>
+                    <ul>
+                        <li><a href="pertemuan/pertemuan1.html">Pertemuan 1</a></li>
+                        <li><a href="pertemuan/pertemuan2.html">Pertemuan 2</a></li>
+                        <li><a href="pertemuan/pertemuan3.html">Pertemuan 3</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Referensi</h4>
+                    <ul>
+                        <li><a href="https://www.w3schools.com" target="_blank">W3Schools</a></li>
+                        <li><a href="https://developer.mozilla.org" target="_blank">MDN Web Docs</a></li>
+                        <li><a href="https://html.com" target="_blank">HTML.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; AGUS NURHIDAYATULLAH - 231011403462</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to Top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+        
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>
